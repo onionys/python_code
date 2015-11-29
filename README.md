@@ -25,4 +25,5 @@
 
 
 
-這樣Raspberry Pi 在開機就會去執行LCM.py並在LCM模組上顯示出IP位址。
+這樣Raspberry Pi 在開機就會去執行LCM.py並在LCM模組上顯示出IP位址。    
+可以試著加入程式碼，增加 "使用按鈕停止 LCM.py 埶行" 的功能。
