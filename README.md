@@ -27,3 +27,22 @@
 
 這樣Raspberry Pi 在開機就會去執行LCM.py並在LCM模組上顯示出IP位址。    
 可以試著加入程式碼，增加 "使用按鈕停止 LCM.py 埶行" 的功能。
+
+# 其他Python相關資料
+
+## IPython 使用
+
+IPython notebook 使用教學(簡體中文)
+[http://mindonmind.github.io/2013/02/08/ipython-notebook-interactive-computing-new-era/](http://mindonmind.github.io/2013/02/08/ipython-notebook-interactive-computing-new-era/)
+
+
+IPython Magics 介紹(英文)
+[http://nbviewer.ipython.org/github/ipython/ipython/blob/1.x/examples/notebooks/Cell%20Magics.ipynb](http://nbviewer.ipython.org/github/ipython/ipython/blob/1.x/examples/notebooks/Cell%20Magics.ipynb)
+
+
+IPython Cookbook (英文)
+[https://github.com/ipython/ipython/wiki/Cookbook%3A-Index](https://github.com/ipython/ipython/wiki/Cookbook%3A-Index)
+
+
+IPython Tips & Tricks (English)
+[https://ipython.org/ipython-doc/2/interactive/tips.html#tips](https://ipython.org/ipython-doc/2/interactive/tips.html#tips)
