@@ -1,0 +1,27 @@
+<html>
+<head>
+	<script src="http://HOST_IP:PORT/file/jquery.min.js"></script>
+	<script>
+
+
+                function timer_functions(){
+			$.get("http://HOST_IP:PORT/button1",function(data){$("#btn1")[0].textContent = data;})
+			$.get("http://HOST_IP:PORT/button2",function(data){$("#btn2")[0].textContent = data;})
+		}
+
+
+		$().ready(function(){
+			alert("Hello Jquery");
+			setInterval(timer_functions, 1000); // 1000 ms 
+		});
+
+	</script>
+</head>
+
+
+
+<body>
+	<h1 id="btn1">unknown</h1>
+	<h1 id="btn2">unknown</h1>
+</body>
+</html>

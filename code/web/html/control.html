@@ -1,0 +1,25 @@
+<html>
+<head>
+	<script src="http://HOST_IP:PORT/file/jquery.min.js"></script>
+	<script>
+		$().ready(function(){
+			$("#led1on").click(function(){  $.get("http://HOST_IP:PORT/request?led1=on");  });
+			$("#led1off").click(function(){ $.get("http://HOST_IP:PORT/request?led1=off"); });
+			$("#led2on").click(function(){  $.get("http://HOST_IP:PORT/led2/on");          });
+			$("#led2off").click(function(){ $.get("http://HOST_IP:PORT/led2/off");         });
+		});
+
+	</script>
+</head>
+
+
+
+<body>
+	<button type="button" id="led1on">LED1 ON</button>
+	<button type="button" id="led1off">LED1 OFF</button> </br>
+
+	<button type="button" id="led2on">LED2 ON</button>
+	<button type="button" id="led2off">LED2 OFF</button> </br>
+
+</body>
+</html>
