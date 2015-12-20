@@ -200,7 +200,7 @@ ESP8266是可程式化的通用微控制器(具有WiFi功能)，具有少數的 
 
 # 使用 ESPlorer 寫 Lua 程式言語控制ESP8266
 
-打開 ESPlorer ，UART 的連線速度改為 9600。 ESP8266 切換回去一般模式(GPIO_0 不接地) 然後等ESPlorer 按下 "Open" 之後再打開ESP8266 的電源。此時就會看到韌體的版本訊息，之後就可以開始寫程式了。
+打開 ESPlorer ，UART 的連線速度改為 9600。 ESP8266 切換回去一般模式(GPIO\_0 不接地) 然後等ESPlorer 按下 "Open" 之後再打開ESP8266 的電源。此時就會看到韌體的版本訊息，之後就可以開始寫程式了。
 
 使用左半邊視窗的 "NodeMCU+MicroPython" 的頁面，就可以開始編寫 lua code了。寫完code之後，按下下面的按鈕 "Send to ESP"，就會看到所編寫的程式碼被以送一行 code 執行一行code 的方式送到 ESP8266模組裡面執行。
 
@@ -212,51 +212,50 @@ ESP8266是可程式化的通用微控制器(具有WiFi功能)，具有少數的 
 
 # Lua Project: wifi-serial bridge
 
-[提供Sample Code 的網站](http://www.roboremo.com/esp8266-tcp-to-serial.html)
+下面的 lua code 是為了把 motoduion 經由 UART port 傳出來的封包透過 Wi-Fi 的形式傳送給 Raspberry Pi。  
+因為是使用UDP/IP 的形式傳送，所以 Raspberry Pi 那邊要實作一個 udp socket 程式來接收封包。  
 
 
-    wifi.setmode(wifi.SOFTAP)
+## init.lua
+
+    print("ESP8266 START")
     
-    cfg={}
-    cfg.ssid="mywifi"
-    cfg.pwd="qwerty123"
+    ssid = "My_AP"  # 要連接的 Wi-Fi AP 主機名稱 
+    passwd = "12345678"  # AP 連線密碼
+    scratch_ip = "192.168.0.1" # raspberry pi 主機的 IP
+    scratch_port = 12345  # IP的 Port number
     
-    cfg.ip="192.168.0.1"
-    cfg.netmask="255.255.255.0"
-    cfg.gateway="192.168.0.1"
+    wifi.setmode(wifi.STATION)
+    wifi.sta.config(ssid,passwd,1)
     
-    port = 9876
-    
-    wifi.ap.setip(cfg)
-    wifi.ap.config(cfg)
-    
-    print("ESP8266 TCP to Serial Bridge v1.0 by RoboRemo")
-    print("SSID: " .. cfg.ssid .. "  PASS: " .. cfg.pwd)
-    print("RoboRemo app must connect to " .. cfg.ip .. ":" .. port)
-    print("BaudRate will change now to 115200")
-    
-    tmr.alarm(0,200,0,function() -- run after a delay
-    
-        uart.setup(0, 115200, 8, 0, 1, 1)
-    
-        srv=net.createServer(net.TCP, 28800) 
-        srv:listen(port,function(conn)
-         
-            uart.on("data", 0, function(data)
-                conn:send(data)
-            end, 0)
-            
-            conn:on("receive",function(conn,payload) 
-                uart.write(0, payload)
-            end)  
-            
-            conn:on("disconnection",function(c) 
-                uart.on("data")
-            end)
-            
-        end)
+    tmr.alarm(1,1000, 1, function() 
+        if wifi.sta.getip()==nil then 
+            print(" Wait to IP address! for " .. ssid) 
+        else 
+            print("New IP address is "..wifi.sta.getip())
+            tmr.stop(1)
+            sck = net.createConnection(net.UDP)
+            sck:on('receive', function(sck,pl) uart.write(0,pl) end)
+            uart.on('data',0, function(data) sck:send(data) end,0)
+            sck:connect(scratch_port,scratch_ip)
+            sck:send("START UART Tunnel\n")
+            uart.setup(0,38400,8,0,1,0)
+        end 
     end)
+    
+    print(wifi.sta.getip())
 
+
+## main.lua
+
+    print("START to change 38400")
+    uart.setup(0,38400,8,0,1,0)
+    print("START 38400 baudrate")
+    print("uart restart")
+    sck = net.createConnection(net.UDP)
+    sck:on('receive', function(sck,pl) uart.write(0,pl) end)
+    uart.on('data',0, function(data) sck:send(device_id .. data) end,0)
+    sck:connect(scratch_port,scratch_ip)
 
 
 ## Reference
