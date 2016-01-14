@@ -1,6 +1,19 @@
+#!/usr/bin/env python3
 
-from class_code import *
 
 
-print("this is in ttt.py")
-print("print", __name__)
+print("START")
+
+import time
+
+time.sleep(1)
+print("END")
+
+import random
+
+print(random.randint(1,100))
+
+
+
+
+
