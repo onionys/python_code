@@ -20,6 +20,7 @@ class Person:
     def __str__(self):
         return "Hello this is str..."
 
+
     def __enter__(self):
         print("---------------{} call __enter__".format(self.name))
 
