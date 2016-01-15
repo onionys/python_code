@@ -4,14 +4,11 @@ from time import sleep
 
 def g_pi_tain(n):
     g_pi = []
-
     for i in range(n):
         sleep(1)
         g_pi.append("gpi")
         print("gpi ok.", i)
-
     return g_pi
-
 
 def g_pi_tain2(n):
     for i in range(n):

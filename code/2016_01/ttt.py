@@ -1,19 +1,13 @@
-#!/usr/bin/env python3
 
 
+def say_hi(name=""):
+    print("Hi!{}".format(name))
 
-print("START")
-
-import time
-
-time.sleep(1)
-print("END")
-
-import random
-
-print(random.randint(1,100))
+def say_hello(name=""):
+    print("Hello!{}".format(name))
 
 
 
 
 
+if __name__=="__main__":
