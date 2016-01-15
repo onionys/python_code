@@ -4,19 +4,21 @@
 class Person:
 
     def __init__(self,name,age):
-        self.name = name
-        self.age = age
+        self.__name = name
+        self.__age = age
 
     def say_hi(self):
         print("Hi! I am")
-        print(self.name)
+        print(self.__name)
 
     def vote(self,man):
-        print('---')
-        if self.age >= 20:
+        if self.__age >= 20:
             print("you vote ", man)
         else:
             print("You can't vote because you age.")
+
+    def __str__(self):
+        return "Hello this is str..."
 
 
 if __name__ == "__main__":
@@ -47,5 +49,6 @@ if __name__ == "__main__":
         print("Hi! I'm ", self.name)
     someone.say_hi = types.MethodType(temp_func,someone)
     someone.say_hi()
+
 
 

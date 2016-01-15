@@ -12,11 +12,12 @@ class Person:
         print(self.name)
 
     def vote(self,man):
-        print('---')
         if self.age >= 20:
             print("you vote ", man)
         else:
             print("You can't vote because you age.")
+        pass
+        # .....
 
 
 if __name__ == "__main__":
