@@ -1,8 +1,6 @@
 #!/usr/bin/env python3
 
-
 class Person:
-
     def __init__(self,name,age):
         self.name = name
         self.age = age
@@ -18,8 +16,7 @@ class Person:
             print("You can't vote because you age.")
 
     def __str__(self):
-        return "Hello this is str..."
-
+        return self.name 
 
     def __enter__(self):
         print("---------------{} call __enter__".format(self.name))
@@ -27,6 +24,41 @@ class Person:
     def __exit__(self,exc_type,exc_val, exc_tb):
         print("---------------{} call __exit__".format(self.name))
 
+
+from random import randint
+
+class Student(Person):
+    def __init__(self, name, age):
+        super().__init__(name,age)
+        self.score = 0
+        self.accept_test_to_get_score()
+
+    def accept_test_to_get_score(self):
+        self.score = randint(0,100)
+
+    def get_score(self):
+        return self.score
+
+    def set_score(self,score):
+        self.score = score
+
+
+class Teacher(Person):
+    def __init__(self,name):
+        super().__init__(name,40)
+        pass
+
+    def give_score(self, student, score):
+        student.set_score(score)
+
+            
+def main2():
+    student = Student('john',25)
+    teacher = Teacher("David")
+    print("student score: ", student.get_score())
+    teacher.give_score(student,90)
+    print("teacher give student score: ",90)
+    print("student score: ", student.get_score())
 
 
 def main():
@@ -66,4 +98,4 @@ def main1():
 
 
 if __name__ == "__main__":
-    main()
+    main2()
