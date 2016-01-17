@@ -1,6 +1,13 @@
 
-from class_code import *
+
+def say_hi(name=""):
+    print("Hi!{}".format(name))
+
+def say_hello(name=""):
+    print("Hello!{}".format(name))
 
 
-print("this is in ttt.py")
-print("print", __name__)
+
+
+
+if __name__=="__main__":
