@@ -31,13 +31,11 @@ class Gpi:
         print("{}雞排攤因為沒訂單收攤了".format(self.name))
 
 
-
-
 def main():
     n_gpi = input("先生您要幾份雞排?")
     n_gpi = int(n_gpi)
 
-    gpi = Gpi("開元社",10)
+    gpi = Gpi("開元社",n_gpi)
     gpi.start()
     gpi.join()
 

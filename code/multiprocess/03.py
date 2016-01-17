@@ -3,7 +3,6 @@
 from multiprocessing import Process, Queue
 from time import sleep
 
-
 def num_put(q):
     for i in range(10):
         print("process num_put: put ", i)

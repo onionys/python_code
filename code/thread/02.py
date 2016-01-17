@@ -9,8 +9,6 @@ def gpi(n):
     for i in range(n):
         print("雞排攤:炸好第{}份雞排".format(i+1))
         sleep(1)
-
-
 # 
 def main():
 

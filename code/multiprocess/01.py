@@ -11,6 +11,6 @@ def myFunc(name):
 
 
 if __name__ == "__main__":
-    proc = Process(target=myFunc,args=("test" + str(i),)) 
+    proc = Process(target=myFunc,args=("test" ,)) 
     proc.start()
     proc.join()
