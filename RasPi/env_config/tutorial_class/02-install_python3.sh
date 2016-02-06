@@ -24,5 +24,6 @@ echo "----------------------------------"
 #pip install scipy
 
 apt-get install python3-numpy python3-scipy python3-matplotlib python3-pandas python3-pandas-lib python3-lxml python3-requests 
+
 pip install sympy
 

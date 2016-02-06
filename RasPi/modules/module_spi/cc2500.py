@@ -123,5 +123,4 @@ class cc2500:
                 self.SIDLE()
                 return -1
 
-
-
+    

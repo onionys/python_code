@@ -7,6 +7,7 @@ from subprocess import check_output
 class qc1602a:
 
     def __init__(self):
+
         GPIO.setmode(GPIO.BOARD)
         self.LCD_RS = 38
         self.LCD_RW = 40
