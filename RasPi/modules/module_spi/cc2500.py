@@ -96,6 +96,12 @@ class CC2500(object):
         self.SFRX()
         self.SFTX()
 
+    def read_config(self):
+        reg_config = []
+        for reg in range(49):
+            val = self.bus.xfer2([0x80 | reg , 0x00])[1]
+            reg_config.append(val)
+        return reg_config
     ## USER API
 
     def write(self,package):
@@ -129,7 +135,8 @@ if __name__ == "__main__":
     cc = CC2500()
     count = 0
     while True:
-        cc.write("hello",count)
+        sleep(1)
+        cc.write("hello %d" % count)
         count += 1
         if count % 100 == 0:
             cc.reset()
