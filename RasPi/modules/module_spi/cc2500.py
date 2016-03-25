@@ -2,7 +2,7 @@
 from spidev import SpiDev
 from time import sleep
 
-class cc2500:
+class CC2500(object):
 
     REG_MARCSTATE = 0xC0 | 0x35
     CMD_SRES = 0x30
@@ -123,4 +123,14 @@ class cc2500:
                 self.SIDLE()
                 return -1
 
+
+if __name__ == "__main__":
+    from time import sleep
+    cc = CC2500()
+    count = 0
+    while True:
+        cc.write("hello",count)
+        count += 1
+        if count % 100 == 0:
+            cc.reset()
     
