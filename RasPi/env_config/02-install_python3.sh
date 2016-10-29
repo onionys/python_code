@@ -3,13 +3,13 @@
 echo "------------------------------"
 echo "install python3 Dev tools"
 echo "------------------------------"
-apt-get install -y ipython3-notebook python3-dev python3-pip geany geany-plugin-py bpython3
+apt-get install -y python3-dev python3-pip
 
 
 echo "---------------------------------"
-echo "install python3 i2c, spi, flask  "
+echo "install python3 i2c, spi         "
 echo "---------------------------------"
-apt-get install -y python3-smbus python3-spidev python3-flask
+apt-get install -y python3-smbus python3-spidev
 
 
 echo "----------------------------------"
@@ -17,8 +17,11 @@ echo " pip install python class packages"
 echo "----------------------------------"
 #pip install numpy scipy sympy pandas requests lxml
 
-#apt-get install liblxml2-dev libxslt1-dev
-#pip3 install lxml
+apt-get install -y libxml2-dev libxslt-dev
+pip3 install lxml requests
+pip3 install "ipython[all]"
+
+
 
 #apt-get install libblas-dev liblapack-dev libatlas-base-dev gfortran
 #pip install scipy

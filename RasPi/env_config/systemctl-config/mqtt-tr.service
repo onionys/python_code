@@ -1,0 +1,8 @@
+[Unit]
+Description=MQTT msg transfer to AWS
+After=network.target rc.local.service
+
+[Service]
+Type=idle
+ExecStart=/usr/bin/python3 /home/onionys/code/mqtt-transfer/MQTTMsgServer2.py > /home/onionys/code/mqtt-transfer/syslog 2>&1
+
