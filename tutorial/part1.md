@@ -25,4 +25,21 @@ https://www.continuum.io/downloads
 
 python的程式碼都是以單純的文字檔格式儲存下來的，要執行這些文字形式的程式碼時，其實是先執行一個叫做 python 或 python3 的執行檔去讀取程式碼後一行行的執行下去。
 
+所以先來玩玩python 的直譯器吧。先打開command line執行環境。然後執行 python 指令，但是如果版本顯示python2.7xxx左右，那就執行 python3 試看看。像我的mac os x 是較舊的，所以要執行python3。如下圖。
 
+<img src="./imgs/01.png">
+
+如圖所示，在那個 ">>>" 符號之後就可以開始打python的程式碼了。
+
+ 
+## hello world
+
+先來在螢幕上面顯示個"hello world"吧，鍵入以下內容:
+
+    >>> print("hello world") 
+
+然後按下enter鍵後，就會看到螢幕印出 hello world 的字樣，如下圖。
+
+<img src="./imgs/02.png">
+
+這篇就先講到這邊，之後看能不能之後較有空的時候再來寫玩整一點(看心情?)。接下來進入part2 基本資料結構的部份。
